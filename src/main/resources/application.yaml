@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: soap-web-service-17
+
+service:
+  security:
+    keystore:
+      location: keystore/emsnewkeystore.jks
+      alias: emsnewcert
+      password: emsnewpassword1
+      private-key-password: emsnewpassword2

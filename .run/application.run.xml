@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="soap-web-service-17" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.verygood.security.ProducingWebServiceApplication" />
+    <option name="VM_PARAMETERS" value="--add-exports java.xml.crypto/com.sun.org.apache.xml.internal.security=ALL-UNNAMED " />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
