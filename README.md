@@ -24,3 +24,8 @@ keytool -genkey -alias "${ALIAS}" -keyalg RSA -keysize 2048 -keystore "${KEYSTOR
 
 ## You are good to run
 If you are using Intellij IDEA the run configuration should be picked up automatically [from](./.run/application.run.xml) 
+
+## To verify, execute
+```shell
+curl --header "content-type: text/xml" -d @src/test/resources/request.xml http://localhost:8080/ws > target/response.xml && xmllint --format target/response.xml
+```
