@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>17</java.version>
 
+		<commons.lang3.version>3.17.0</commons.lang3.version>
 		<spring-ws.version>3.1.5</spring-ws.version>
 		<saaj-impl.version>1.5.3</saaj-impl.version>
 		<wss4j-ws-security-dom.version>2.4.1</wss4j-ws-security-dom.version>
@@ -37,6 +38,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
 		</dependency>
 
 		<dependency>

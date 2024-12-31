@@ -5,13 +5,16 @@ import com.sun.xml.wss.XWSSProcessor;
 import com.sun.xml.wss.XWSSProcessorFactory;
 import java.io.InputStream;
 import javax.security.auth.callback.CallbackHandler;
+import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.context.MessageContext;
-import org.springframework.ws.server.EndpointInterceptor;
+import org.springframework.ws.soap.SoapHeaderElement;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
+import org.springframework.ws.soap.server.SoapEndpointInterceptor;
 
-public class SecuritySignatureInterceptor implements EndpointInterceptor {
+public class SecuritySignatureInterceptor implements SoapEndpointInterceptor {
 
   private final XWSSProcessor processor;
 
@@ -53,4 +56,13 @@ public class SecuritySignatureInterceptor implements EndpointInterceptor {
 
   }
 
+  @Override
+  public boolean understands(SoapHeaderElement header) {
+    boolean result = false;
+    final QName name = header.getName();
+    if (StringUtils.equals(name.getLocalPart(), "Security") && StringUtils.equals(name.getPrefix(), "wsse")) {
+      result = true;
+    }
+    return result;
+  }
 }
