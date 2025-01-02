@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProducingWebServiceApplication {
+public class WebServiceApplication {
 
 	static {
 		// Re-enable sha1 algorithms
@@ -19,7 +19,7 @@ public class ProducingWebServiceApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProducingWebServiceApplication.class, args);
+		SpringApplication.run(WebServiceApplication.class, args);
 	}
 
 }

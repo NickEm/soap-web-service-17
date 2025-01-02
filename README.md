@@ -29,3 +29,10 @@ If you are using Intellij IDEA the run configuration should be picked up automat
 ```shell
 curl --header "content-type: text/xml" -d @src/test/resources/request.xml http://localhost:8080/ws > target/response.xml && xmllint --format target/response.xml
 ```
+
+## Running tests
+While running tests that check the signature make sure to add VM options 
+```shell
+--add-exports java.xml.crypto/com.sun.org.apache.xml.internal.security=ALL-UNNAMED
+--add-exports java.xml.crypto/org.jcp.xml.dsig.internal.dom=ALL-UNNAMED
+```

@@ -1,12 +1,14 @@
 package com.verygood.security.configuration;
 
-import com.verygood.security.component.SecuritySignatureInterceptor;
+import com.verygood.security.component.SoapSignatureSecurityInterceptor;
 import java.io.InputStream;
 import java.security.KeyStore;
+import javax.security.auth.callback.CallbackHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.security.xwss.callback.KeyStoreCallbackHandler;
 
 @Configuration
@@ -23,6 +25,9 @@ public class SecurityConfig {
 
   @Value("${service.security.keystore.private-key-password:emsnewpassword2}")
   private String keystorePrivateKeyPassword;
+
+  @Value("${service.security.interceptor.is-debug-mode:false}")
+  private boolean interceptorIsDebugMode;
 
   @Bean
   public KeyStoreCallbackHandler keyStoreCallbackHandler() {
@@ -47,8 +52,8 @@ public class SecurityConfig {
   }
 
   @Bean
-  public SecuritySignatureInterceptor securitySignatureInterceptor(KeyStoreCallbackHandler keyStoreCallbackHandler) {
-    return new SecuritySignatureInterceptor(keyStoreCallbackHandler);
+  public EndpointInterceptor SoapSignatureSecurityInterceptor(CallbackHandler keyStoreCallbackHandler) {
+    return new SoapSignatureSecurityInterceptor(keyStoreCallbackHandler, interceptorIsDebugMode);
   }
 
 }

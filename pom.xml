@@ -22,6 +22,8 @@
 		<saaj-impl.version>1.5.3</saaj-impl.version>
 		<wss4j-ws-security-dom.version>2.4.1</wss4j-ws-security-dom.version>
 		<xws-security.version>3.0</xws-security.version>
+
+		<assertj.version>3.27.0</assertj.version>
 	</properties>
 
 	<dependencies>
@@ -78,12 +80,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.wss4j</groupId>
-			<artifactId>wss4j-ws-security-dom</artifactId>
-			<version>${wss4j-ws-security-dom.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.sun.xml.wss</groupId>
 			<artifactId>xws-security</artifactId>
 			<version>${xws-security.version}</version>
@@ -98,6 +94,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -106,7 +112,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<jvmArguments>--add-exports java.xml.crypto/com.sun.org.apache.xml.internal.security=ALL-UNNAMED</jvmArguments>
+					<jvmArguments>
+						--add-exports java.xml.crypto/com.sun.org.apache.xml.internal.security=ALL-UNNAMED
+						--add-exports java.xml.crypto/org.jcp.xml.dsig.internal.dom=ALL-UNNAMED
+					</jvmArguments>
 				</configuration>
 			</plugin>
 			<plugin>

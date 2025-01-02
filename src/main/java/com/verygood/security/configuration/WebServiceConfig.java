@@ -1,6 +1,5 @@
 package com.verygood.security.configuration;
 
-import com.verygood.security.component.SecuritySignatureInterceptor;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -21,7 +20,7 @@ import org.springframework.xml.xsd.XsdSchema;
 public class WebServiceConfig extends WsConfigurerAdapter {
 
   @Autowired
-  private SecuritySignatureInterceptor securitySignatureInterceptor;
+  private EndpointInterceptor soapSignatureSecurityInterceptor;
 
   @Bean
   public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(
@@ -49,7 +48,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
   @Override
   public void addInterceptors(List<EndpointInterceptor> interceptors) {
-    interceptors.add(securitySignatureInterceptor);
+    interceptors.add(soapSignatureSecurityInterceptor);
   }
 
 }

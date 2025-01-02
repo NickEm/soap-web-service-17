@@ -7,5 +7,7 @@ service:
     keystore:
       location: keystore/emsnewkeystore.jks
       alias: emsnewcert
-      password: emsnewpassword1
-      private-key-password: emsnewpassword2
+      password: emsnewpassword
+      private-key-password: emsnewpassword
+    interceptor:
+      is-debug-mode: true

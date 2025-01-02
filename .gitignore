@@ -34,3 +34,5 @@ build/
 
 ### Service ###
 src/main/resources/keystore/
+
+./.local/
